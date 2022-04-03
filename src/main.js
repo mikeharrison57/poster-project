@@ -116,7 +116,11 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {
+  title: this.posterTitle.innerText,
+  quote: this.posterQuote.innerText,
+  image: this.posterImage.src
+};
 
 
 // event listeners go here 👇//
@@ -126,6 +130,7 @@ savedPosterButton.addEventListener('click', showSavedPosters);
 takeMeBackButton.addEventListener('click', takeMeBack);
 backToMainButton.addEventListener('click', takeMeBack);
 showMyPosterButton.addEventListener('click', submitForm);
+saveThisPosterButton.addEventListener('click', savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -186,4 +191,12 @@ function newPoster(imageURL, title, quote) {
 function submitForm() {
   event.preventDefault();
   createPoster();
+}
+
+function savePoster() {
+savedPosters.push(currentPoster)
+}
+
+function viewSavedPosts() {
+
 }
