@@ -7,9 +7,9 @@ var makePosterButton = document.querySelector('.show-form');
 var savedPosterButton = document.querySelector('.show-saved');
 var takeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
-var mainPosterPage = document.querySelector('.main-poster')
-var makePosterPage = document.querySelector('.poster-form')
-var savedPosterPage = document.querySelector('.saved-posters')
+var mainPosterPage = document.querySelector('.main-poster');
+var makePosterPage = document.querySelector('.poster-form');
+var savedPosterPage = document.querySelector('.saved-posters');
 var imageInput = document.getElementById('poster-image-url');
 var titleInput = document.getElementById('poster-title');
 var quoteInput = document.getElementById('poster-quote');
@@ -144,30 +144,36 @@ function changeHomePage() {
   newPoster(randomImage, randomTitle, randomQuote);
 };
 
-function displayForm() {
-  mainPosterPage.classList.add('hidden');
-  show(makePosterPage)
-}
-
 function show(element) {
   element.classList.remove('hidden')
-}
+};
 
 function hide(element) {
   element.classList.add('hidden')
-}
+};
+
+function displayForm() {
+  mainPosterPage.classList.add('hidden');
+  show(makePosterPage)
+};
 
 function showSavedPosters() {
-  mainPosterPage.classList.add('hidden')
+  mainPosterPage.classList.add('hidden');
   show(savedPosterPage);
   viewSavedPosts()
-}
+};
 
 function takeMeBack() {
   hide(savedPosterPage);
   hide(makePosterPage);
-  show(mainPosterPage);
-}
+  show(mainPosterPage)
+};
+
+function newPoster(imageURL, title, quote) {
+  currentPoster = new Poster(imageURL, title, quote);
+  console.log(currentPoster)
+};
+
 function createPoster() {
   var imageURL = imageInput.value;
   var title = titleInput.value;
@@ -179,22 +185,21 @@ function createPoster() {
   titles.push(title);
   quotes.push(quote);
   newPoster(imageURL, title, quote);
-  takeMeBack();
-}
-function newPoster(imageURL, title, quote) {
-  currentPoster = new Poster(imageURL, title, quote);
-  console.log(currentPoster)
-}
+  takeMeBack()
+};
+
 function submitForm() {
   event.preventDefault();
-  createPoster();
-}
+  createPoster()
+};
 
 function savePoster() {
   if(!savedPosters.includes()) {
-     savedPosters.push(posterToSave)
+     savedPosters.push(currentPoster)
    } else {
-     savedPosters;
+     savedPosters
+   }
+};
 
 function viewSavedPosts() {
   for(var i = 0; i < savedPosters.length; i++) {
@@ -204,8 +209,5 @@ function viewSavedPosts() {
     <h1 class="poster-title">${savedPosters[i].title}</h1>
     <h3 class="poster-quote">${savedPosters[i].quote}</h3>
     </section>`
-// savedPosterGrid.classList.styles("mini-poster");
-// savedPosterGrid.classList
-console.log(savedPosterGrid)
   }
-}
+};
