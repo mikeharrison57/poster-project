@@ -14,8 +14,8 @@ var imageInput = document.getElementById('poster-image-url');
 var titleInput = document.getElementById('poster-title');
 var quoteInput = document.getElementById('poster-quote');
 var showMyPosterButton = document.querySelector('.make-poster');
-var saveThisPosterButton = document.querySelector('.save-poster')
-
+var saveThisPosterButton = document.querySelector('.save-poster');
+var savedPosterGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,14 +116,10 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster = {
-  title: this.posterTitle.innerText,
-  quote: this.posterQuote.innerText,
-  image: this.posterImage.src
-};
-
+var currentPoster;
 
 // event listeners go here 👇//
+window.addEventListener('load', changeHomePage);
 showRandomButton.addEventListener('click', changeHomePage);
 makePosterButton.addEventListener('click', displayForm);
 savedPosterButton.addEventListener('click', showSavedPosters);
@@ -145,8 +141,8 @@ function changeHomePage() {
   posterQuote.innerText = randomQuote;
   posterTitle.innerText = randomTitle;
   posterImage.src = randomImage;
+  newPoster(randomImage, randomTitle, randomQuote);
 };
-changeHomePage()
 
 function displayForm() {
   mainPosterPage.classList.add('hidden');
@@ -164,6 +160,7 @@ function hide(element) {
 function showSavedPosters() {
   mainPosterPage.classList.add('hidden')
   show(savedPosterPage);
+  viewSavedPosts()
 }
 
 function takeMeBack() {
@@ -185,8 +182,8 @@ function createPoster() {
   takeMeBack();
 }
 function newPoster(imageURL, title, quote) {
-  var userPoster = new Poster(imageURL, title, quote);
-  console.log(userPoster)
+  currentPoster = new Poster(imageURL, title, quote);
+  console.log(currentPoster)
 }
 function submitForm() {
   event.preventDefault();
@@ -194,9 +191,21 @@ function submitForm() {
 }
 
 function savePoster() {
-savedPosters.push(currentPoster)
-}
+  if(!savedPosters.includes()) {
+     savedPosters.push(posterToSave)
+   } else {
+     savedPosters;
 
 function viewSavedPosts() {
-
+  for(var i = 0; i < savedPosters.length; i++) {
+    savedPosterGrid.innerHTML +=
+    `<section class="mini-poster">
+    <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
+    <h1 class="poster-title">${savedPosters[i].title}</h1>
+    <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+    </section>`
+// savedPosterGrid.classList.styles("mini-poster");
+// savedPosterGrid.classList
+console.log(savedPosterGrid)
+  }
 }
