@@ -23,6 +23,7 @@ We were assigned this project on Tuesday, March 29, 2022. In our time working on
 My partner and I had to incorporate a great amount of prior knowledge, and learn some new JavaScript concepts in order for us to get our page running how we wanted it to. This project required extensive use of DOM query selectors, event listeners, and functions. It also required a class, a loop, and a conditional. Our initial goal was to complete iteration 3 of our project. We did attain this goal, but unfortunately didn’t reach our stretch goal of iteration 4. Many aspects of this project were challenging for us both including managing the amount of query selected data, creating functions that would make use of multiple methods, and keeping our event selectors performing the tasks we wanted them to. My partner and I worked together, but also consulted our colleagues, and mentors for some additional assistance when we needed it. The result is a collaborative effort that we are both proud of.
 
 ### Deployed Page
+
 [Poster Project](https://mikeharrison57.github.io/poster-project/)
 
 ### Contributors
